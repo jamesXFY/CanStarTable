@@ -1,0 +1,38 @@
+.item-container{
+    margin:5px 5px;
+}
+
+img{
+    width: 45px;
+    height: 45px;
+}
+
+.visible{
+    display: block
+}
+
+.beveage-icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.beveage-desc{
+    display: block;
+}
+
+.left-align{
+    float: left;
+}
+
+.right-align{
+    float: right;
+}
+
+.amount-input{
+    input{
+        width: 60%;
+    }
+    display: flex;
+    justify-content: center;
+}

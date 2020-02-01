@@ -1,7 +1,6 @@
 ﻿export interface IUser {
     id: string;
+    avator: string;
     name: string;
-    avatar: string;
-    profession: string;
-    schedulesCreated: number;
+    dateOfBirth: string;
 }

@@ -1,43 +1,80 @@
-<div class="panel panel-primary" [ngClass]="{shadowCard: onEdit}" [@flyInOut]="'in'">
-    <div class="panel-heading">
-        <h3 class="panel-title pull-left" [class.hidden]="onEdit"><i class="fa fa-user" aria-hidden="true"></i>{{edittedUser.name}}</h3>
-        <input [(ngModel)]="edittedUser.name" [class.hidden]="!onEdit" [style.color]="'brown'" required class="form-control" />
-        <div class="clearfix"></div>
-    </div>
-
-    <div highlight="whitesmoke" class="panel-body">
-        <div class="">
-            <img src="{{apiHost}}images/{{edittedUser.avatar}}" class="img-avatar" alt="">
-            <div class="caption">
-                <p>
-                    <span [class.hidden]="onEdit">{{edittedUser.profession}}</span>
-                </p>
-                <p [hidden]="!onEdit">
-                    <input [(ngModel)]="edittedUser.profession" class="form-control" required />
-                </p>
-                <p>
-                    <button class="btn btn-primary" (click)="viewSchedules(edittedUser)" [disabled]="edittedUser.schedulesCreated === 0">
-                    <i class="fa fa-calendar-check-o" aria-hidden="true"></i> Schedules <span class="badge"> 
-                        {{edittedUser.schedulesCreated}}</span>
-                    </button>
-                </p>
-            </div>
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+  <button
+    type="button"
+    class="close"
+    aria-label="Close"
+  >
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form>
+      <div class="form-group">
+          <label for="avatorSelector">Avator</label>
+          <div class="input-group">
+            <h3 class="panel-title pull-left">
+                <i class="fas fa-smile"></i>
+            </h3>
+            <select class="form-control" id="avatorSelector" (change)="setAvator($event)">
+                <option selected disabled>Choose...</option>
+                <option value="icon1.svg">Banana</option>
+                <option value="icon2.svg">Cap</option>
+                <option value="icon3.svg">eggplant</option>
+                <option value="icon4.svg">Icestick</option>
+                <option value="icon5.svg">Icecream</option>
+              </select>
+          </div>
         </div>
+    <div class="form-group">
+      <label for="dateOfBirth">Name</label>
+      <div class="input-group">
+        <h3 class="panel-title pull-left">
+          <i class="fa fa-user" aria-hidden="true"></i>
+        </h3>
+        <input
+          #nameOfUser
+          id="nameOfUser"
+          class="form-control"
+          placeholder="Name"
+          name="nu"
+          (change)="setName($event)"
+        />
+      </div>
     </div>
-    <div class="panel-footer">
-        <div [class.hidden]="edittedUser.id < 0">
-            <button class="btn btn-default btn-xs" (click)="editUser()">
-                <i class="fa fa-pencil" aria-hidden="true"></i>
-                    {{onEdit === false ? "Edit" : "Cancel"}}
-                </button>
-            <button class="btn btn-default btn-xs" [class.hidden]="!onEdit" (click)="updateUser()" [disabled]="!isUserValid()">
-                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>Update</button>
-            <button class="btn btn-danger btn-xs" (click)="openRemoveModal()">
-                <i class="fa fa-times" aria-hidden="true"></i>Remove</button>
+    <div class="form-group">
+      <label for="dateOfBirth">Date of birth</label>
+      <div class="input-group">
+        <h3 class="panel-title pull-left">
+          <i class="fas fa-calendar"></i>
+        </h3>
+        <input
+          #dateOfBirth
+          id="dateOfBirth"
+          class="form-control"
+          placeholder="yyyy-mm-dd"
+          name="dp"
+          ngbDatepicker
+          #dp="ngbDatepicker"
+          (change)="setDateOfBirth($event)"
+        />
+        <div class="input-group-append">
+          <button
+            class="btn btn-outline-secondary calendar"
+            (click)="dp.toggle()"
+            type="button"
+          ></button>
         </div>
-        <div [class.hidden]="!(edittedUser.id < 0)">
-            <button class="btn btn-default btn-xs" [class.hidden]="!onEdit" (click)="createUser()" [disabled]="!isUserValid()">
-                <i class="fa fa-plus" aria-hidden="true"></i>Create</button>
-        </div>
+      </div>
     </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button
+    type="button"
+    class="btn btn-outline-dark"
+    (click)="createUser()"
+  >
+    Save
+  </button>
 </div>

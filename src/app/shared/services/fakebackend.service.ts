@@ -1,38 +1,37 @@
 import { Injectable } from '@angular/core';
 import { IUser } from '../interfaces';
+import { Subject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FakeBackendService {
-  private usersStorage : IUser[];
+  private userIdCounter = 0;
+  private usersStorage: IUser[];
 
-  constructor() { }
+  public userSubject: Subject<IUser[]> = new Subject();
 
-  public getUsers(){
+  constructor() {
+    this.usersStorage = new Array();
+  }
+
+  public usersObservable(): Observable<IUser[]> {
+    return this.userSubject.asObservable();
+  }
+
+  public getUsers() {
     return this.usersStorage;
   }
 
-  public getUserById(id:string){
-    let user;
-    this.usersStorage.forEach((user:IUser) => {
-      if(user.id === id){
-        user = user;
-        return;
-      }
-    });
-    return user;
-  }
-
-  public addUser(user:IUser){
+  public addUser(user: IUser) {
+    user.id = (this.userIdCounter++).toString();
     this.usersStorage.push(user);
+    this.userSubject.next(this.usersStorage);
   }
 
-  public updateUser(){
+  public updateUser() {}
 
-  }
-
-  public removeUser(user:IUser){
+  public removeUser(user: IUser) {
     this.usersStorage.pop();
   }
 }

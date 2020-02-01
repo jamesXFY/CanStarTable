@@ -1,0 +1,9 @@
+.input-group{
+    align-items: center;
+    
+}
+
+.input-group>h3{
+    margin-right: 16px;
+    margin-bottom: unset;
+}

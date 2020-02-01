@@ -1,83 +1,56 @@
-import { Component, Input, Output, OnInit, ViewContainerRef, EventEmitter, ViewChild} from '@angular/core';
-
-import {trigger, state, style, animate, transition} from '@angular/animations';
-
-import { IUser } from 'src/app/shared/interfaces';
-
-import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import { FakeBackendService } from 'src/app/shared/services/fakebackend.service';
+import {
+  Component,
+  OnInit,
+  Input,
+  ViewChild,
+  ElementRef,
+  OnChanges,
+  SimpleChanges
+} from "@angular/core";
+import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
+import { IUser } from "src/app/shared/interfaces";
+import { FakeBackendService } from "src/app/shared/services/fakebackend.service";
 
 @Component({
-  selector: 'user',
-  templateUrl: 'user.component.html',
-  animations: [
-      trigger('flyInOut', [
-          state('in', style({ opacity: 1, transform: 'translateX(0)' })),
-          transition('void => *', [
-              style({
-                  opacity: 0,
-                  transform: 'translateX(-100%)'
-              }),
-              animate('0.5s ease-in')
-          ]),
-          transition('* => void', [
-              animate('0.2s 10 ease-out', style({
-                  opacity: 0,
-                  transform: 'translateX(100%)'
-              }))
-          ])
-      ])
-  ]
+  selector: "app-user",
+  templateUrl: "./user.component.html",
+  styleUrls: ["./user.component.css"]
 })
 export class UserComponent implements OnInit {
   @Input() user: IUser;
-  @Output() removeUser = new EventEmitter();
-  @Output() userCreated = new EventEmitter();
 
-  edittedUser: IUser;
-  onEdit: boolean = false;
-  apiHost: string;
-  // Modal properties
-  @ViewChild('modal',{static:true})
-  modal: any;
-  items: string[] = ['item1', 'item2', 'item3'];
-  selected: string;
-  output: string;
-  userSchedulesLoaded: boolean = false;
-  index: number = 0;
-  backdropOptions = [true, false, 'static'];
-  animation: boolean = true;
-  keyboard: boolean = true;
-  backdrop: string | boolean = true;
+  @ViewChild("nameOfUser", { static: true }) nameOfUser: ElementRef;
+  @ViewChild("dateOfBirth", { static: true }) dateOfBirth: ElementRef;
 
-  constructor(private fakebackendService: FakeBackendService
-      ) { }
+  constructor(
+    public activeModal: NgbActiveModal,
+    private fakeBackendService: FakeBackendService
+  ) {}
 
   ngOnInit() {
+    if(this.user === undefined) {
+      this.user = {
+        id: "",
+        avator: "",
+        name: "",
+        dateOfBirth: ""
+      };
+    }
+  }
+  setAvator($event) {
+    this.user.avator = $event.currentTarget.value;
   }
 
-  editUser() {
+  setName($event) {
+    this.user.name = $event.currentTarget.value;
+  }
+
+  setDateOfBirth($event) {
+    this.user.dateOfBirth = $event.currentTarget.value;
   }
 
   createUser() {
+    this.fakeBackendService.addUser(this.user);
+    this.activeModal.close();
   }
-
-  updateUser() {
-  }
-
-  openRemoveModal() {
-  }
-
-  viewSchedules(user: IUser) {
-      
-  }
-
-  opened() {
-  }
-
-  isUserValid(): boolean {
-      return !(this.edittedUser.name.trim() === "")
-          && !(this.edittedUser.profession.trim() === "");
-  }
-
 }
