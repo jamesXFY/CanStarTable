@@ -1,38 +1,75 @@
-.item-container{
-    margin:5px 5px;
+.item-container {
+  margin: 5px 5px;
 }
 
-img{
-    width: 45px;
+.btn {
+  border: 1px solid gray;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  min-width: 300px;
+  min-height: 450px;
+  padding: unset;
+}
+
+img {
+  width: 300px;
+  height: 300px;
+}
+
+.visible {
+  display: block;
+}
+
+.beveage-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: gray;
+}
+
+.beveage-desc {
+  display: block;
+}
+
+.left-align {
+  float: left;
+}
+
+.right-align {
+  float: right;
+}
+
+.amount-input {
+  input {
+    width: 60%;
+  }
+  display: flex;
+  justify-content: center;
+}
+
+a {
+  text-decoration: none;
+  font-size: 22px;
+  color: black;
+}
+
+a>img{
+    width:45px;
     height: 45px;
 }
 
-.visible{
-    display: block
+p{
+    margin-bottom: unset;
 }
 
-.beveage-icon{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.beveage-desc{
-    display: block;
-}
-
-.left-align{
-    float: left;
-}
-
-.right-align{
-    float: right;
-}
-
-.amount-input{
-    input{
-        width: 60%;
-    }
-    display: flex;
-    justify-content: center;
+button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
 }

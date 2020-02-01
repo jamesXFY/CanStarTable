@@ -1,8 +1,6 @@
 <div class="container items-container">
   <div class="row">
-    <b>i am test</b>
-    <div class="col-sm-4" *ngFor="let item of users">
-      <b>i am test</b>
+    <div class="col-sm-4 profile-card" *ngFor="let item of users">
       <app-card-component [user]="item"></app-card-component>
     </div>
   </div>

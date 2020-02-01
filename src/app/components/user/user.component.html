@@ -4,6 +4,7 @@
     type="button"
     class="close"
     aria-label="Close"
+    (click)="dismiss()"
   >
     <span aria-hidden="true">&times;</span>
   </button>
@@ -56,7 +57,8 @@
           name="dp"
           ngbDatepicker
           #dp="ngbDatepicker"
-          (change)="setDateOfBirth($event)"
+          (change)="setDateOfBirthByChange($event)"
+          (dateSelect)="setDateOfBirthByselect($event)"
         />
         <div class="input-group-append">
           <button
@@ -70,6 +72,7 @@
   </form>
 </div>
 <div class="modal-footer">
+  <span class="err-message" *ngIf="errMessage">*{{errMessage}}</span>
   <button
     type="button"
     class="btn btn-outline-dark"

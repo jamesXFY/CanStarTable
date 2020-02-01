@@ -1,7 +1,7 @@
 <!-- Navigation -->
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" [routerLink]="['/']">
+  <a class="navbar-brand col-6" [routerLink]="['/']">
     <i class="fa fa-home fa-2x" aria-hidden="true"></i>
   </a>
   <button
@@ -16,17 +16,17 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <div class="collapse navbar-collapse col-6" id="navbarSupportedContent">
     <ul class="nav navbar-nav">
-      <li>
+      <li class="menu-item">
         <a [routerLink]="['/usersTable']" routerLinkActive="active"
-          ><i class="fa fa-users fa-2x" aria-hidden="true"></i
+          ><i class="fa fa-users fa-3x" aria-hidden="true"></i
         ></a>
       </li>
 
-      <li>
+      <li class="menu-item">
         <a [routerLink]="['/usersCard']"
-          ><i class="fas fa-id-card fa-2x"></i></a>
+          ><i class="fas fa-id-card fa-3x"></i></a>
       </li>
     </ul>
   </div>

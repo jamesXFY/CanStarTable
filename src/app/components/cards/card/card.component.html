@@ -1,9 +1,22 @@
-<div class="btn btn-success">
-  <div class="col-12 beveage-icon"><img [src]="'assets/imgs/' + user.avator" /></div>
-  <div class="col-12 beveage-desc" >
-    <span class="left-align">{{ user.name }}</span>
-  </div>
-  <div class="col-12 beveage-desc" >
-      <span class="left-align">{{ user.dateOfBirth}}</span>
-    </div>
+<div class="container">
+    <div class="btn row">
+        <div class="col-12 beveage-icon">
+          <img [src]="'assets/imgs/' + user.avator" [alt]="user.name" />
+        </div>
+        <div class="col-12 beveage-desc" >
+          <span><h1>{{ user.name }}</h1></span>
+        </div>
+        <div class="col-12 beveage-desc" >
+            <span>{{ user.dateOfBirth}}</span>
+        </div>
+        <div style="margin: 24px 0;">
+            <a href="#"><img [src]="'assets/imgs/hollow-cut-behance.svg'" [alt]="user.name" /></a> 
+            <a href="#"><img [src]="'assets/imgs/hollow-cut-facebook.svg'" [alt]="user.name" /></a>  
+            <a href="#"><img [src]="'assets/imgs/hollow-cut-instagram.svg'" [alt]="user.name" /></a>  
+            <a href="#"><img [src]="'assets/imgs/hollow-cut-linkedin.svg'" [alt]="user.name" /></a> 
+          </div>
+          <p><button>Contact</button></p>
+      </div>
 </div>
+
+  

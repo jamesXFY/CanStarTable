@@ -25,7 +25,6 @@ export class UsersComponent implements OnInit{
 
   ngOnInit() {
     this.users = this.fakeBackendService.getUsers();
-    console.log(this.users);
   }
 
   removeUser(user: any) {}
