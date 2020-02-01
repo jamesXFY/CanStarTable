@@ -5,6 +5,7 @@ import {trigger, state, style, animate, transition} from '@angular/animations';
 import { IUser } from 'src/app/shared/interfaces';
 
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import { FakeBackendService } from 'src/app/shared/services/fakebackend.service';
 
 @Component({
   selector: 'user',
@@ -49,7 +50,7 @@ export class UserComponent implements OnInit {
   keyboard: boolean = true;
   backdrop: string | boolean = true;
 
-  constructor(private modalService: NgbModal
+  constructor(private fakebackendService: FakeBackendService
       ) { }
 
   ngOnInit() {

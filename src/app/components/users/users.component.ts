@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, TemplateRef } from '@angular/core';
 
 import { IUser } from 'src/app/shared/interfaces';
-import { UserComponent } from 'src/app/components/user/user.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { FakeBackendService } from 'src/app/shared/services/fakebackend.service';
 
 @Component({
     selector: 'users',
@@ -12,9 +13,10 @@ export class UsersComponent implements OnInit {
     users: IUser[];
     addingUser: boolean = false;
 
-    constructor() { }
+    constructor(private modalService: NgbModal,private fakeBackendService:FakeBackendService) { }
 
     ngOnInit() {
+        this.users = this.fakeBackendService.getUsers();
     }
 
     removeUser(user: any) {
@@ -23,9 +25,7 @@ export class UsersComponent implements OnInit {
     userCreated(user: any) {
     }
 
-    addUser() {
-    }
-
-    cancelAddUser() {
+    addUser(content:any) {
+        this.modalService.open(content)
     }
 }

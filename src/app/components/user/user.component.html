@@ -41,38 +41,3 @@
         </div>
     </div>
 </div>
-
-<ng-template #mymodal let-modal class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" *ngIf="userSchedulesLoaded">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" aria-label="Close" (click)="hideChildModal()">
-          <span aria-hidden="true">&times;</span>
-        </button>
-                <h4 class="modal-title">{{edittedUser.name}} schedules created</h4>
-            </div>
-            <div class="modal-body">
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th>Title</th>
-                            <th>Description</th>
-                            <th>Place</th>
-                            <th>Time Start</th>
-                            <th>Time End</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let schedule of userSchedules">
-                            <td> {{schedule.title}}</td>
-                            <td>{{schedule.description}}</td>
-                            <td>{{schedule.location}}</td>
-                            <td>{{schedule.timeStart | date}}</td>
-                            <td>{{schedule.timeEnd | date}}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-</ng-template>
