@@ -1,0 +1,11 @@
+.block-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 260px;
+  padding: 20px 0px;
+}
+
+.block-row:nth-child(even) {
+  background: gray;
+}

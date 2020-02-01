@@ -7,3 +7,7 @@
 .table td, .table th{
     vertical-align: middle;
 }
+
+.table tr:nth-child(even) {
+    background: gray;
+}
