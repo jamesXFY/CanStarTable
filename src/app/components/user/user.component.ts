@@ -5,7 +5,8 @@ import {
   ViewChild,
   ElementRef,
   OnChanges,
-  SimpleChanges
+  SimpleChanges,
+  Renderer2
 } from '@angular/core';
 import { NgbActiveModal, NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
 import { IUser } from 'src/app/shared/interfaces';
@@ -18,17 +19,15 @@ import { FakeBackendService } from 'src/app/shared/services/fakebackend.service'
 })
 export class UserComponent implements OnInit {
   @Input() user: IUser;
-  @Input() errMessage: string;
+  @Input() errMessage: string="";
 
-  @ViewChild('nameOfUser', { static: true }) nameOfUser: ElementRef;
-  @ViewChild('dateOfBirth', { static: true }) dateOfBirth: ElementRef;
-
-  
+  @ViewChild('avatorSelector', { static: true }) avatorSelector: ElementRef;
 
   constructor(
     public activeModal: NgbActiveModal,
     private fakeBackendService: FakeBackendService,
-    private ngbDateFormatter: NgbDateParserFormatter
+    private ngbDateFormatter: NgbDateParserFormatter,
+    private render: Renderer2
   ) {}
 
   ngOnInit() {
@@ -61,6 +60,7 @@ export class UserComponent implements OnInit {
     if (this.verifyUser()) {
       this.fakeBackendService.addUser(this.user);
       this.activeModal.close();
+      this.errMessage = '';
     } else {
       this.errMessage = 'please fill all the fields';
     }
@@ -68,6 +68,11 @@ export class UserComponent implements OnInit {
 
   dismiss() {
     this.activeModal.dismiss();
+  }
+
+  selectOpenToggle(){
+    let inputElement: HTMLElement = this.avatorSelector.nativeElement as HTMLElement;
+    inputElement.click();
   }
 
   private verifyUser() {

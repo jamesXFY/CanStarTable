@@ -17,7 +17,7 @@
             <h3 class="panel-title pull-left">
                 <i class="fas fa-smile"></i>
             </h3>
-            <select class="form-control" id="avatorSelector" (change)="setAvator($event)">
+            <select #avatorSelector class="form-control" id="avatorSelector" (change)="setAvator($event)">
                 <option selected disabled>Choose...</option>
                 <option value="icon1.svg">Banana</option>
                 <option value="icon2.svg">Cap</option>
@@ -57,15 +57,11 @@
           name="dp"
           ngbDatepicker
           #dp="ngbDatepicker"
-          (change)="setDateOfBirthByChange($event)"
+          [readonly]="true"
           (dateSelect)="setDateOfBirthByselect($event)"
         />
-        <div class="input-group-append">
-          <button
-            class="btn btn-outline-secondary calendar"
-            (click)="dp.toggle()"
-            type="button"
-          ></button>
+        <div class="input-group-append dropdown">
+          <i class="fas fa-chevron-down" (click)="dp.toggle()"></i>
         </div>
       </div>
     </div>

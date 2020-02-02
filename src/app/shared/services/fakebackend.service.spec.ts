@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { FakebackendService } from './fakebackend.service';
+import { FakeBackendService } from './fakebackend.service';
 
 describe('FakebackendService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: FakebackendService = TestBed.get(FakebackendService);
+    const service: FakeBackendService = TestBed.get(FakeBackendService);
     expect(service).toBeTruthy();
   });
 });

@@ -1,14 +1,33 @@
-.input-group{
-    align-items: center;
-    
+.input-group {
+  align-items: center;
 }
 
-.input-group>h3{
-    margin-right: 16px;
-    margin-bottom: unset;
+.input-group > h3 {
+  margin-right: 16px;
+  margin-bottom: unset;
 }
 
-.err-message{
-    width: 100%;
-    color: red;
+.err-message {
+  width: 100%;
+  color: red;
+}
+
+select {
+  background-image: url('/assets/imgs/angle-arrow-down.svg') !important;
+  background-position: calc(100% - 16px);
+  background-size: 14px;
+  background-repeat: no-repeat;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.dropdown {
+  position: absolute;
+  width: 50px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right: 0;
+  z-index: 5;
 }
