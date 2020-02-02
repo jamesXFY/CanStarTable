@@ -8,7 +8,6 @@ import { IUser } from './shared/interfaces';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  private users: IUser[];
 
   constructor() {}
 
