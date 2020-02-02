@@ -9,5 +9,5 @@
 }
 
 .table tr:nth-child(even) {
-    background: gray;
+    background: #f2f2f2;
 }

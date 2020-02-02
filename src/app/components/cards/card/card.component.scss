@@ -73,3 +73,9 @@ button {
   width: 100%;
   font-size: 18px;
 }
+
+@media (max-width: 768px) {
+  img{
+    width: 100%;
+  }
+ }

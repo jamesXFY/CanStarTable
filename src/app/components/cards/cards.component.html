@@ -1,6 +1,6 @@
-<div class="container items-container">
+<div class="container items-container" [@flyInOut]="'in'">
   <div class="row">
-    <div class="col-sm-4 profile-card" *ngFor="let item of users">
+    <div class="col-md-4 col-12 profile-card" *ngFor="let item of users">
       <app-card-component [user]="item"></app-card-component>
     </div>
   </div>
